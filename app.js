@@ -73,7 +73,7 @@ var intents = new builder.IntentDialog({ recognizers: [recognizer] })
         Bing.composite(session.message.text, {
         top: 5
         }, function(error, res, body){
-            session.send('Here are some search results: %s', body.news);
+            session.send('Here are some search results: %s', (body.news).toString());
         });
     });
 
