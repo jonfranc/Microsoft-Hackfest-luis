@@ -1,5 +1,6 @@
 var builder = require('botbuilder');
 var restify = require('restify');
+var Bing = require('node-bing-api')({ accKey: process.env.BING_SEARCH });
 
 // Setup Restify Server
 var server = restify.createServer();
@@ -70,6 +71,11 @@ var intents = new builder.IntentDialog({ recognizers: [recognizer] })
     ])
     .onDefault((session) => {
         session.send('Sorry, I did not understand \'%s\'.', session.message.text);
+        Bing.composite(session.message.text, {
+        top: 5
+        }, function(error, res, body){
+            session.send('Here are some search results: %s', body.news);
+        });
     });
 
 bot.dialog('/', intents);
