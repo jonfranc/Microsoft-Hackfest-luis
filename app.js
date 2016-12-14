@@ -69,6 +69,11 @@ var intents = new builder.IntentDialog({ recognizers: [recognizer] })
     ])
     .onDefault((session) => {
         session.send('Sorry, I did not understand \'%s\'.', session.message.text);
+        Bing.composite(session.message.text, {
+        top: 5
+        }, function(error, res, body){
+            session.send('Here are some search results: %s', body.news);
+        });
     });
 
 bot.dialog('/', intents);
