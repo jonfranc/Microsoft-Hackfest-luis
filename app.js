@@ -19,7 +19,7 @@ server.post('/api/messages', connector.listen());
 
 // Main dialog with LUIS
 //var recognizer = new builder.LuisRecognizer(LuisModelUrl);
-var recognizer = new builder.LuisRecognizer('https://iswudev.azure-api.net/luis/v2.0/apps/98eead94-8470-4337-9280-5bb7d5fb8502?subscription-key=c2cd164e833947fbb41ae9a3d9886a1f&q=');
+var recognizer = new builder.LuisRecognizer('https://iswudev.azure-api.net/luis/v2.0/apps/98eead94-8470-4337-9280-5bb7d5fb8502?subscription-key=c2cd164e833947fbb41ae9a3d9886a1f');
 var intents = new builder.IntentDialog({ recognizers: [recognizer] })
     .matches('sendCall', [
         function (session, args, next) {
