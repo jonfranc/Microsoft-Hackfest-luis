@@ -1,5 +1,6 @@
 var builder = require('botbuilder');
 var restify = require('restify');
+var Bing = require('node-bing-api')({ accKey: process.env.BING_SEARCH });
 
 // Setup Restify Server
 var server = restify.createServer();
